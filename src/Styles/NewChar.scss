@@ -1,0 +1,69 @@
+$titleSize: 1.5em;
+$titleFont: Ferrum;
+
+.charContainer {
+  .charText {
+    font-family: $titleFont;
+    font-size: $titleSize;
+    .charName {
+      border: none;
+      font-family: $titleFont;
+      font-size: $titleSize;
+    }
+    .charLevel {
+      border: none;
+      font-family: $titleFont;
+      font-size: $titleSize;
+      padding: 8px 16px;
+    }
+  }
+  .abilityScores {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .abilityScore {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1em;
+      .abilitySpan {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px black solid;
+        border-radius: 1em;
+        max-width: fit-content;
+        // padding-top: -10px;
+        padding: 1em;
+        .abilityName {
+          max-width: fit-content;
+          padding: 0.5em;
+          border: 1px black solid;
+          border-radius: 35%;
+          margin-top: -2.25em;
+          background-color: white;
+        }
+        .abilitySelector {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+        .abilityMod {
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+        }
+        .abilityValue {
+          margin-bottom: -2.25em;
+          background-color: white;
+          max-width: fit-content;
+          padding: 0.5em;
+          border: 1px black solid;
+          border-radius: 35%;
+        }
+      }
+    }
+  }
+}

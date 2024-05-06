@@ -1,0 +1,33 @@
+.LoadingContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1em;
+  .LoadingImg {
+    max-width: 2em;
+    animation: spin 1.5s infinite linear;
+    margin-right: 1em;
+  }
+  .LoadingText {
+    animation: pulse 1s alternate infinite;
+    font-family: Vinque;
+  }
+}
+
+@keyframes pulse {
+  100% {
+    color: #001f003f;
+  }
+  0% {
+    color: #80d1f5;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

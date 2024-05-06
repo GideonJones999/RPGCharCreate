@@ -1,0 +1,23 @@
+.accordion-item {
+  min-width: 100vw;
+  .accordion-title {
+    font-family: Ferrum;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    margin: 1em;
+    h3,
+    h4 {
+      margin: 0;
+    }
+    .is-active-marker {
+      padding-left: 0.25em;
+    }
+  }
+  .accordion-content {
+    max-width: 85vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,45 @@
+@font-face {
+  font-family: Potra;
+  src: url("../public/fonts/potra/Potra.ttf");
+}
+
+@font-face {
+  font-family: FantArt;
+  src: url("../public/fonts/fantaisieartistique/FantaisieArtistique.ttf");
+}
+
+@font-face {
+  font-family: Ferrum;
+  src: url("../public/fonts/ferrum/ferrum.otf");
+}
+
+@font-face {
+  font-family: Vinque;
+  src: url("../public/fonts/vinque/vinque\ rg.otf");
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .App-header {
+    background-color: black;
+    color: whitesmoke;
+    padding: 0.5em;
+    min-width: 100vw;
+    h1 {
+      font-family: FantArt;
+    }
+  }
+
+  .App-body {
+    div {
+      h2 {
+        font-family: Vinque;
+      }
+    }
+  }
+}
