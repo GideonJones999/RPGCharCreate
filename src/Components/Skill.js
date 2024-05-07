@@ -1,6 +1,5 @@
 import { Component } from "react";
 import getData from "../Helpers/GetAPIFunc";
-import "../Styles/NewChar.scss"
 
 class Skill extends Component {
   constructor(props) {
@@ -9,10 +8,11 @@ class Skill extends Component {
       isLoaded: false,
       stats: props.stats,
       skillData: {},
-      isProficient: props.isProf,
+      isProf: props.isProf,
       profModifier: props.profMod,
       modifier: 0,
       abilityType: "",
+      profOptions: props.profOptions,
     };
   }
 
@@ -57,11 +57,25 @@ class Skill extends Component {
 
   render() {
     var { skillData, modifier } = this.state;
+    // console.log(JSON.stringify(this.props.profOpitons));
+    // console.log(skillData.index);
+    let isOption =
+      JSON.stringify(this.props.profOpitons).indexOf(skillData.index) > -1;
+    // console.log(isOption);
+
     return (
       <div className="skill">
         {skillData && (
           <h4>
-            {skillData.name} ({modifier})
+            <input
+              type="checkbox"
+              checked={this.props.isProf}
+              value={skillData.index}
+              disabled={!isOption}
+            ></input>
+            <li>
+              {skillData.name} ({modifier})
+            </li>
           </h4>
         )}
       </div>

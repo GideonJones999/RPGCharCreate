@@ -3,7 +3,7 @@ import getData from "../Helpers/GetAPIFunc";
 import Loading from "./Loading";
 import "../Styles/NewChar.scss";
 import DropdownSimp from "../Helpers/DropdownSimp";
-import Proficiences from "./Proficiencies";
+import Proficiencies from "./Proficiencies";
 
 class NewChar extends Component {
   constructor(props) {
@@ -207,20 +207,33 @@ class NewChar extends Component {
             <h1 className="charText">
               <input className="charName" placeholder="Character Name"></input>{" "}
               is a Level{" "}
-              <select
-                className="charLevel"
-                defaultValue={level}
-                name={"CharLvl"}
-                id={"CharLvl"}
-                onChange={this.handleLevelSelect}
-              >
-                {lvlArr &&
-                  lvlArr.map((lvl) => (
-                    <option value={lvl} key={"lvl" + lvl}>
-                      {lvl}
-                    </option>
-                  ))}
-              </select>{" "}
+              {(str === 0 ||
+                dex === 0 ||
+                con === 0 ||
+                int === 0 ||
+                wis === 0 ||
+                cha === 0) && (
+                <select
+                  className="charLevel"
+                  defaultValue={level}
+                  name={"CharLvl"}
+                  id={"CharLvl"}
+                  onChange={this.handleLevelSelect}
+                >
+                  {lvlArr &&
+                    lvlArr.map((lvl) => (
+                      <option value={lvl} key={"lvl" + lvl}>
+                        {lvl}
+                      </option>
+                    ))}
+                </select>
+              )}
+              {str !== 0 &&
+                dex !== 0 &&
+                con !== 0 &&
+                int !== 0 &&
+                wis !== 0 &&
+                cha !== 0 && <span>{level}</span>}{" "}
               {itemsRace.name} {itemsClass.name}
             </h1>
           </span>
@@ -401,7 +414,7 @@ class NewChar extends Component {
               int !== 0 &&
               wis !== 0 &&
               cha !== 0 && (
-                <Proficiences
+                <Proficiencies
                   backgroundUrl="/api/backgrounds/acolyte"
                   race_profs={itemsRace.starting_proficiencies}
                   class_profs={itemsClass.proficiencies}
