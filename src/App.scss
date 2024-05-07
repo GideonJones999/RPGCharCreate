@@ -18,12 +18,18 @@
   src: url("../public/fonts/vinque/vinque\ rg.otf");
 }
 
+@font-face {
+  font-family: BlackCastle;
+  src: url("../public//fonts/black-castle-mf-font/Blackcastlemf-BG5n.ttf");
+}
+
 .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2em;
 
   .App-header {
     background-color: black;

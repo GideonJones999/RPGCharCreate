@@ -1,7 +1,7 @@
 $titleSize: 1.5em;
 $titleFont: Ferrum;
 
-.charContainer {
+div.charContainer {
   .charText {
     font-family: $titleFont;
     font-size: $titleSize;
@@ -17,52 +17,76 @@ $titleFont: Ferrum;
       padding: 8px 16px;
     }
   }
-  .abilityScores {
+  div.stats {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    .abilityScore {
+    align-items: center;
+    transition: 0.5s smooth;
+    div.abilityScores {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      margin-top: 1em;
-      .abilitySpan {
+      .abilityScore {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        border: 1px black solid;
-        border-radius: 1em;
-        max-width: fit-content;
-        // padding-top: -10px;
-        padding: 1em;
-        .abilityName {
-          max-width: fit-content;
-          padding: 0.5em;
-          border: 1px black solid;
-          border-radius: 35%;
-          margin-top: -2.25em;
-          background-color: white;
-        }
-        .abilitySelector {
+        align-items: center;
+        margin-top: 1em;
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+        .abilitySpan {
           display: flex;
-          flex-direction: row;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
-        }
-        .abilityMod {
-          margin-top: 0.5em;
-          margin-bottom: 0.5em;
-        }
-        .abilityValue {
-          margin-bottom: -2.25em;
-          background-color: white;
-          max-width: fit-content;
-          padding: 0.5em;
+          justify-content: center;
           border: 1px black solid;
-          border-radius: 35%;
+          border-radius: 1em;
+          max-width: fit-content;
+          padding: 1em;
+          .abilityName {
+            max-width: fit-content;
+            padding: 0.5em;
+            border: 1px black solid;
+            border-radius: 35%;
+            margin-top: -2.25em;
+            background-color: white;
+            font-family: BlackCastle;
+          }
+          .abilitySelector {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-family: Ferrum;
+          }
+          .abilityMod {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+            font-size: 1.5em;
+            font-family: Ferrum;
+          }
+          .abilityValue {
+            margin-bottom: -2.25em;
+            background-color: white;
+            max-width: fit-content;
+            padding: 0.5em;
+            border: 1px black solid;
+            border-radius: 35%;
+            font-family: Ferrum;
+          }
         }
+      }
+    }
+    div.proficiencies {
+      display: flex;
+      h3 {
+        font-family: BlackCastle;
+      }
+      .skill h4 {
+        margin-top: 0.5em;
+        margin-bottom: 0;
+        padding: 0.5em;
       }
     }
   }

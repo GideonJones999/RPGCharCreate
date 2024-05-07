@@ -17,32 +17,27 @@ class Main extends Component {
 
   handleClick = (objClicked) => {
     if (objClicked === "r") {
-      // console.log("Race");
       this.setState({ raceSelect: true }, () => this.checkAllSelect());
     } else if (objClicked === "c") {
-      // console.log("Class");
       this.setState({ classSelect: true }, () => this.checkAllSelect());
     }
   };
 
   checkAllSelect = () => {
     var { raceSelect, classSelect } = this.state;
-    // console.log("Race: ", raceSelect);
-    // console.log("Class: ", classSelect);
     if (raceSelect && classSelect) {
       this.setState({ allSelect: true }, () => {
         const newCharEl = document.getElementById("NewChar_container");
         if (!newCharEl) return;
         window.scroll({ top: newCharEl.offsetTop - 20, behavior: "smooth" });
       });
-      // console.log("Yipee!");
     }
   };
 
   render() {
     var { allSelect } = this.state;
     return (
-      <body className="App-body">
+      <div className="App-body">
         <div className="char-race">
           <h2>Character Race</h2>
           <CharRaces />
@@ -72,7 +67,7 @@ class Main extends Component {
         <div id="NewChar_container">
           {allSelect && <NewChar class={playerClass} race={playerRace} />}
         </div>
-      </body>
+      </div>
     );
   }
 }

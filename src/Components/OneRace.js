@@ -20,17 +20,13 @@ class OneRace extends Component {
       isLoaded: true,
       items: json,
     });
-    // console.log(json);
   }
 
   render() {
     var { isLoaded, items } = this.state;
-    // console.log(items);
     if (!isLoaded) {
-      // console.log(`Race - No`);
       return <Loading />;
     } else {
-      // console.log("Race - Yes");
       return (
         <div className={items.index}>
           <p className="aspect-title">

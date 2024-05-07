@@ -6,12 +6,13 @@ const Dropdown = ({ id, placeholder, options, action }) => {
   const [selected, setSelected] = useState();
 
   const handleRaceSel = (e) => {
-    console.log("You chose ", e.target.value);
     setSelected(e.target.value);
     if (id === "selectRace") {
       playerRace = e.target.value;
+      console.log("You chose ", playerRace);
     } else {
       playerClass = e.target.value;
+      console.log("You chose ", playerClass);
     }
   };
 

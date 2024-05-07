@@ -18,14 +18,11 @@ class Subrace extends Component {
       isLoaded: true,
       items: json,
     });
-    // console.log(json);
   }
 
   render() {
     var { isLoaded, items } = this.state;
-    // console.log(items);
     if (!isLoaded) {
-      // console.log(`Subrace - No`);
       return <Loading />;
     } else {
       return (

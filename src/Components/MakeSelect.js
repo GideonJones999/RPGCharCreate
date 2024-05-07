@@ -21,7 +21,6 @@ class MakeSelect extends Component {
   }
 
   getData() {
-    console.log(this.state);
     return this.state;
   }
 
