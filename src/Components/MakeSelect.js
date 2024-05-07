@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import getData from "../Helpers/GetAPIFunc";
 import Loading from "./Loading";
-import Dropdown from "./Dropdown";
+import Dropdown from "../Helpers/Dropdown";
 
 class MakeSelect extends Component {
   constructor(props) {

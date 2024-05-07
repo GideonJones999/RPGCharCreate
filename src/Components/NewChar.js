@@ -2,7 +2,7 @@ import { Component } from "react";
 import getData from "../Helpers/GetAPIFunc";
 import Loading from "./Loading";
 import "../Styles/NewChar.scss";
-import DropdownSimp from "./DropdownSimp";
+import DropdownSimp from "../Helpers/DropdownSimp";
 import Proficiences from "./Proficiencies";
 
 class NewChar extends Component {
@@ -34,7 +34,9 @@ class NewChar extends Component {
         0, -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 5, 5,
         6, 6, 7, 7, 8, 8, 9, 9, 10,
       ],
-      profBonus: [2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6],
+      profBonus: [
+        0, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6,
+      ],
     };
   }
 
@@ -189,6 +191,16 @@ class NewChar extends Component {
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
       ];
 
+      console.log(itemsClass);
+      console.log(itemsRace);
+      // AC
+      // Max HP
+      // Initiative
+      // Vision
+      // Features and Traits
+      // Attacks
+      // Spellcasting
+      // Inventory
       return (
         <div className="charContainer">
           <span>
@@ -229,7 +241,9 @@ class NewChar extends Component {
                         value={str}
                       />
                     )}
-                    {str === 0 && strB !== 0 && <p>+ {strB}</p>}{" "}
+                    {str === 0 && strB !== 0 && (
+                      <p className="attrBonus">+ {strB}</p>
+                    )}{" "}
                   </span>
                   {str !== 0 && (
                     <h4 className="abilityMod">
@@ -255,7 +269,9 @@ class NewChar extends Component {
                         value={dex}
                       />
                     )}{" "}
-                    {dex === 0 && dexB !== 0 && <p>+ {dexB}</p>}{" "}
+                    {dex === 0 && dexB !== 0 && (
+                      <p className="attrBonus">+ {dexB}</p>
+                    )}{" "}
                   </span>
                   {dex !== 0 && (
                     <h4 className="abilityMod">
@@ -281,7 +297,9 @@ class NewChar extends Component {
                         value={con}
                       />
                     )}{" "}
-                    {con === 0 && conB !== 0 && <p>+ {conB}</p>}{" "}
+                    {con === 0 && conB !== 0 && (
+                      <p className="attrBonus">+ {conB}</p>
+                    )}{" "}
                   </span>
                   {con !== 0 && (
                     <h4 className="abilityMod">
@@ -307,7 +325,9 @@ class NewChar extends Component {
                         value={int}
                       />
                     )}
-                    {int === 0 && intB !== 0 && <p>+ {intB}</p>}{" "}
+                    {int === 0 && intB !== 0 && (
+                      <p className="attrBonus">+ {intB}</p>
+                    )}{" "}
                   </span>
                   {int !== 0 && (
                     <h4 className="abilityMod">
@@ -333,7 +353,9 @@ class NewChar extends Component {
                         value={wis}
                       />
                     )}
-                    {wis === 0 && wisB !== 0 && <p>+ {wisB}</p>}{" "}
+                    {wis === 0 && wisB !== 0 && (
+                      <p className="attrBonus">+ {wisB}</p>
+                    )}{" "}
                   </span>
                   {wis !== 0 && (
                     <h4 className="abilityMod">
@@ -359,7 +381,9 @@ class NewChar extends Component {
                         value={cha}
                       />
                     )}
-                    {cha === 0 && chaB !== 0 && <p>+{chaB}</p>}{" "}
+                    {cha === 0 && chaB !== 0 && (
+                      <p className="attrBonus">+{chaB}</p>
+                    )}{" "}
                   </span>
                   {cha !== 0 && (
                     <h4 className="abilityMod">
@@ -394,7 +418,12 @@ class NewChar extends Component {
                 />
               )}
           </div>
-          <div className="feats_traits"></div>
+          <div className="feats_traits">
+            <div className="abilitySpan">
+              <span className="abilityName">Speed</span>
+              <h4 className="abilityMod">{itemsRace.speed}</h4>
+            </div>
+          </div>
         </div>
       );
     }

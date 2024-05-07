@@ -66,6 +66,9 @@ div.charContainer {
             font-size: 1.5em;
             font-family: Ferrum;
           }
+          .attrBonus {
+            margin: 0;
+          }
           .abilityValue {
             margin-bottom: -2.25em;
             background-color: white;
@@ -87,6 +90,33 @@ div.charContainer {
         margin-top: 0.5em;
         margin-bottom: 0;
         padding: 0.5em;
+      }
+    }
+  }
+  div.feats_traits {
+    .abilitySpan {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px black solid;
+      border-radius: 1em;
+      max-width: fit-content;
+      padding: 1em;
+      .abilityName {
+        max-width: fit-content;
+        padding: 0.5em;
+        border: 1px black solid;
+        border-radius: 35%;
+        margin-top: -2.25em;
+        background-color: white;
+        font-family: BlackCastle;
+      }
+      .abilityMod {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        font-size: 1.5em;
+        font-family: Ferrum;
       }
     }
   }

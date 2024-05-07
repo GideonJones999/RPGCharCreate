@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { playerClass, playerRace } from "../Helpers/GlobalVars";
+import { playerClass, playerRace } from "./GlobalVars";
 import "../Styles/Dropdown.scss";
 
 const Dropdown = ({ id, placeholder, options, action }) => {
