@@ -27,9 +27,9 @@ class Main extends Component {
     var { raceSelect, classSelect } = this.state;
     if (raceSelect && classSelect) {
       this.setState({ allSelect: true }, () => {
-        const newCharEl = document.getElementById("NewChar_container");
+        const newCharEl = document.getElementById("abilitySelector");
         if (!newCharEl) return;
-        window.scroll({ top: newCharEl.offsetTop - 20, behavior: "smooth" });
+        window.scroll({ top: newCharEl.offsetTop - 500, behavior: "smooth" });
       });
     }
   };

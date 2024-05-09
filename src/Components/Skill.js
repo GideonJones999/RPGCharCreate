@@ -8,11 +8,11 @@ class Skill extends Component {
       isLoaded: false,
       stats: props.stats,
       skillData: {},
-      isProf: props.isProf,
       profModifier: props.profMod,
       modifier: 0,
       abilityType: "",
       profOptions: props.profOptions,
+      isSelected: false,
     };
   }
 
@@ -48,30 +48,44 @@ class Skill extends Component {
         default:
           break;
       }
-      if (this.props.isProf) {
+      if (this.state.isSelected) {
         modifierTemp += this.props.profMod;
       }
-      this.setState({ modifier: modifierTemp });
+      this.setState({ modifier: modifierTemp, isSelected: this.props.isProf });
     });
   }
 
+  handleCheckboxChange = (e) => {
+    const { checked } = e.target;
+    this.setState({ isSelected: checked }, () => {
+      this.props.onProfSelect(this.state.skillData.index, checked);
+    });
+    if (checked) {
+      this.setState({ modifier: this.state.modifier + this.props.profMod });
+    } else {
+      this.setState({ modifier: this.state.modifier - this.props.profMod });
+    }
+    if (this.props.profNumb === 0) {
+      console.log(this.props.profNumb);
+      // this.setState({ isOption: false });
+    }
+  };
+
   render() {
-    var { skillData, modifier } = this.state;
-    // console.log(JSON.stringify(this.props.profOpitons));
-    // console.log(skillData.index);
+    var { skillData, modifier, isSelected } = this.state;
     let isOption =
       JSON.stringify(this.props.profOpitons).indexOf(skillData.index) > -1;
-    // console.log(isOption);
 
     return (
       <div className="skill">
         {skillData && (
           <h4>
             <input
+              onChange={this.handleCheckboxChange}
               type="checkbox"
-              checked={this.props.isProf}
+              checked={isSelected}
               value={skillData.index}
-              disabled={!isOption}
+              disabled={!isOption || this.props.disabled}
             ></input>
             <li>
               {skillData.name} ({modifier})

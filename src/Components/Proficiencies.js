@@ -12,9 +12,11 @@ class Proficiencies extends Component {
       backgroundInfo: "",
       skills: [],
       prof_list: [],
+      selectedProfs: {},
       prof_choices: {},
       stats: props.stats,
       profBonus: props.profBonus,
+      toDisable: false,
     };
   }
 
@@ -34,21 +36,45 @@ class Proficiencies extends Component {
     this.setState({
       prof_list: all_profs,
       prof_choices: this.props.prof_choices,
+      profOpitons: this.props.prof_choices[0].from.options,
+      profNumb: this.props.prof_choices[0].choose,
     });
   }
 
+  handleProfSelection = (prof, isSelected) => {
+    this.setState((prevState) => ({
+      selectedProfs: { ...prevState.selectedProfs, [prof]: isSelected },
+    }));
+  };
+
+  onProfSelect = (index, checked) => {
+    console.log(index, checked);
+    if (checked === true) {
+      this.setState({ profNumb: this.state.profNumb - 1 }, () => {
+        if (this.state.profNumb === 0) {
+          this.setState({ toDisable: true });
+        }
+      });
+    } else {
+      this.setState({ profNumb: this.state.profNumb + 1 });
+    }
+  };
+
   render() {
-    var { isLoaded, prof_list, skills } = this.state;
+    var {
+      isLoaded,
+      prof_list,
+      skills,
+      selectedProfs,
+      profOpitons,
+      profNumb,
+      toDisable,
+    } = this.state;
     if (!isLoaded) {
       return <Loading />;
     } else {
       console.log(this.props.prof_choices);
-      var profOpitons = this.props.prof_choices[0].from.options;
-      var profNumb = this.props.prof_choices[0].choose;
-
-      // for (var option in this.props.prof_choices[0].from.options) {
-      console.log(profOpitons);
-      // }
+      console.log("choose ", profNumb, " from ", profOpitons);
 
       return (
         <div className="proficiences">
@@ -99,8 +125,11 @@ class Proficiencies extends Component {
           </ul>
 
           <h3>Skills</h3>
+          {profNumb > 0 && <h4>Select {profNumb} of the Following</h4>}
           <ul style={{ listStyleType: "none" }}>
             {skills &&
+              prof_list &&
+              JSON.stringify(prof_list) !== null &&
               skills.map((skill) => (
                 <Skill
                   url={skill.url}
@@ -109,6 +138,10 @@ class Proficiencies extends Component {
                   profMod={this.state.profBonus}
                   key={skill.index + "_key"}
                   profOpitons={this.state.prof_choices}
+                  isSelected={selectedProfs[skill.index]}
+                  onProfSelect={this.onProfSelect}
+                  profNumb={profNumb}
+                  disabled={toDisable}
                 />
               ))}
           </ul>
