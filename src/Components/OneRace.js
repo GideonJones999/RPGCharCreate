@@ -28,7 +28,7 @@ class OneRace extends Component {
       return <Loading />;
     } else {
       return (
-        <div className={items.index}>
+        <div className="aspect_cont" id={"cont_" + items.index}>
           <p className="aspect-title">
             {items &&
               items["ability_bonuses"].map((abBon) => (

@@ -84,11 +84,14 @@ class Skill extends Component {
               onChange={this.handleCheckboxChange}
               type="checkbox"
               checked={isSelected}
-              value={skillData.index}
+              value={modifier}
+              key={"skill_" + skillData.index}
               disabled={!isOption || this.props.disabled}
+              id={"skill_" + skillData.index}
             ></input>
             <li>
-              {skillData.name} ({modifier})
+              {skillData.name} ({modifier >= 0 && "+"}
+              {modifier})
             </li>
           </h4>
         )}

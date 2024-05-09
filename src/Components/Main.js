@@ -4,6 +4,7 @@ import CharClasses from "./CharClasses";
 import NewChar from "./NewChar";
 import MakeSelect from "./MakeSelect";
 import { playerClass, playerRace } from "../Helpers/GlobalVars";
+import "../Styles/Main.scss";
 
 class Main extends Component {
   constructor(props) {
@@ -38,32 +39,37 @@ class Main extends Component {
     var { allSelect } = this.state;
     return (
       <div className="App-body">
-        <div className="char-race">
-          <h2>Character Race</h2>
-          <CharRaces />
-          {this.state.allSelect === false && (
-            <span onChange={() => this.handleClick("r")}>
-              <MakeSelect
-                url="/api/races"
-                id="selectRace"
-                placeholder="Select your Race"
-              />
-            </span>
-          )}
-        </div>
-        <div className="char-class">
-          <h2>Character Class</h2>
-          <CharClasses />
-          {this.state.allSelect === false && (
-            <span onChange={() => this.handleClick("c")}>
-              <MakeSelect
-                url="/api/classes"
-                id="selectClass"
-                placeholder="Select your Class"
-              />
-            </span>
-          )}
-        </div>
+        {!allSelect && (
+          <span className="info">
+            <div className="char-race">
+              <h2>Character Race</h2>
+              {this.state.allSelect === false && (
+                <span onChange={() => this.handleClick("r")}>
+                  <MakeSelect
+                    url="/api/races"
+                    id="selectRace"
+                    placeholder="Select your Race"
+                  />
+                </span>
+              )}
+
+              <CharRaces />
+            </div>
+            <div className="char-class">
+              <h2>Character Class</h2>
+              {this.state.allSelect === false && (
+                <span onChange={() => this.handleClick("c")}>
+                  <MakeSelect
+                    url="/api/classes"
+                    id="selectClass"
+                    placeholder="Select your Class"
+                  />
+                </span>
+              )}
+              <CharClasses />
+            </div>
+          </span>
+        )}
         <div id="NewChar_container">
           {allSelect && <NewChar class={playerClass} race={playerRace} />}
         </div>

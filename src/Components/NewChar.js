@@ -193,17 +193,15 @@ class NewChar extends Component {
 
       console.log(itemsClass);
       console.log(itemsRace);
-      // AC
-      // Max HP
-      // Initiative
       // Vision
       // Features and Traits
       // Attacks
       // Spellcasting
       // Inventory
+
       return (
         <div className="charContainer">
-          <span>
+          <span className="charHeader">
             <h1 className="charText">
               <input className="charName" placeholder="Character Name"></input>{" "}
               is a Level{" "}
@@ -236,205 +234,272 @@ class NewChar extends Component {
                 cha !== 0 && <span>{level}</span>}{" "}
               {itemsRace.name} {itemsClass.name}
             </h1>
+            {(str === 0 ||
+              dex === 0 ||
+              con === 0 ||
+              int === 0 ||
+              wis === 0 ||
+              cha === 0) && (
+              <span>
+                {itemsClass.spellcasting && (
+                  <p>
+                    Spellcasting Stat:{" "}
+                    {itemsClass.spellcasting.spellcasting_ability.name}
+                  </p>
+                )}
+                <p>
+                  Saving Throws: {itemsClass.saving_throws[0].name} and{" "}
+                  {itemsClass.saving_throws[1].name}
+                </p>
+              </span>
+            )}
           </span>
-          <div className="stats">
-            <div className="abilityScores">
-              <div
-                className="abilityScore"
-                onChange={() => this.handleStatSelect("str")}
-              >
-                <h3 className="abilitySpan">
-                  <span className="abilityName">STR</span>
-                  <span className="abilitySelector">
-                    {str === 0 && (
-                      <DropdownSimp
-                        id="str_select"
-                        placeholder={"Strength Score"}
-                        options={pointArr}
-                        value={str}
-                      />
-                    )}
-                    {str === 0 && strB !== 0 && (
-                      <p className="attrBonus">+ {strB}</p>
-                    )}{" "}
-                  </span>
-                  {str !== 0 && (
-                    <h4 className="abilityMod">
-                      {strMod >= 0 && "+"}
-                      {strMod}
-                    </h4>
-                  )}
-                  {str !== 0 && <span className="abilityValue">{str}</span>}
-                </h3>
-              </div>
-              <div className="abilityScore">
-                <h3
-                  className="abilitySpan"
-                  onChange={() => this.handleStatSelect("dex")}
+          <div className="charBody">
+            <div className="stats">
+              <div className="abilityScores">
+                <div
+                  className="abilityScore"
+                  onChange={() => this.handleStatSelect("str")}
                 >
-                  <span className="abilityName">DEX</span>
-                  <span className="abilitySelector">
-                    {dex === 0 && (
-                      <DropdownSimp
-                        id="dex_select"
-                        placeholder={"Dexterity Score"}
-                        options={pointArr}
-                        value={dex}
-                      />
-                    )}{" "}
-                    {dex === 0 && dexB !== 0 && (
-                      <p className="attrBonus">+ {dexB}</p>
-                    )}{" "}
-                  </span>
-                  {dex !== 0 && (
+                  <h3 className="abilitySpan">
+                    <span className="abilityName">STR</span>
+                    <span className="abilitySelector">
+                      {str === 0 && (
+                        <DropdownSimp
+                          id="str_select"
+                          placeholder={"Strength Score"}
+                          options={pointArr}
+                          value={str}
+                        />
+                      )}
+                      {str === 0 && strB !== 0 && (
+                        <p className="attrBonus">+ {strB}</p>
+                      )}{" "}
+                    </span>
+                    {str !== 0 && (
+                      <h4 className="abilityMod">
+                        {strMod >= 0 && "+"}
+                        {strMod}
+                      </h4>
+                    )}
+                    {str !== 0 && <span className="abilityValue">{str}</span>}
+                  </h3>
+                </div>
+                <div className="abilityScore">
+                  <h3
+                    className="abilitySpan"
+                    onChange={() => this.handleStatSelect("dex")}
+                  >
+                    <span className="abilityName">DEX</span>
+                    <span className="abilitySelector">
+                      {dex === 0 && (
+                        <DropdownSimp
+                          id="dex_select"
+                          placeholder={"Dexterity Score"}
+                          options={pointArr}
+                          value={dex}
+                        />
+                      )}{" "}
+                      {dex === 0 && dexB !== 0 && (
+                        <p className="attrBonus">+ {dexB}</p>
+                      )}{" "}
+                    </span>
+                    {dex !== 0 && (
+                      <h4 className="abilityMod">
+                        {dexMod >= 0 && "+"}
+                        {dexMod}
+                      </h4>
+                    )}
+                    {dex !== 0 && <span className="abilityValue">{dex}</span>}
+                  </h3>
+                </div>
+                <div className="abilityScore">
+                  <h3
+                    className="abilitySpan"
+                    onChange={() => this.handleStatSelect("con")}
+                  >
+                    <span className="abilityName">CON</span>
+                    <span className="abilitySelector">
+                      {con === 0 && (
+                        <DropdownSimp
+                          id="con_select"
+                          placeholder={"Constitution Score"}
+                          options={pointArr}
+                          value={con}
+                        />
+                      )}{" "}
+                      {con === 0 && conB !== 0 && (
+                        <p className="attrBonus">+ {conB}</p>
+                      )}{" "}
+                    </span>
+                    {con !== 0 && (
+                      <h4 className="abilityMod">
+                        {conMod >= 0 && "+"}
+                        {conMod}
+                      </h4>
+                    )}
+                    {con !== 0 && <span className="abilityValue">{con}</span>}
+                  </h3>
+                </div>
+                <div className="abilityScore">
+                  <h3
+                    className="abilitySpan"
+                    onChange={() => this.handleStatSelect("int")}
+                  >
+                    <span className="abilityName">INT</span>
+                    <span className="abilitySelector">
+                      {int === 0 && (
+                        <DropdownSimp
+                          id="int_select"
+                          placeholder={"Intelligence Score"}
+                          options={pointArr}
+                          value={int}
+                        />
+                      )}
+                      {int === 0 && intB !== 0 && (
+                        <p className="attrBonus">+ {intB}</p>
+                      )}{" "}
+                    </span>
+                    {int !== 0 && (
+                      <h4 className="abilityMod">
+                        {intMod >= 0 && "+"}
+                        {intMod}
+                      </h4>
+                    )}
+                    {int !== 0 && <span className="abilityValue">{int}</span>}
+                  </h3>
+                </div>
+                <div className="abilityScore">
+                  <h3
+                    className="abilitySpan"
+                    onChange={() => this.handleStatSelect("wis")}
+                  >
+                    <span className="abilityName">WIS</span>
+                    <span className="abilitySelector">
+                      {wis === 0 && (
+                        <DropdownSimp
+                          id="wis_select"
+                          placeholder={"Wisdom Score"}
+                          options={pointArr}
+                          value={wis}
+                        />
+                      )}
+                      {wis === 0 && wisB !== 0 && (
+                        <p className="attrBonus">+ {wisB}</p>
+                      )}{" "}
+                    </span>
+                    {wis !== 0 && (
+                      <h4 className="abilityMod">
+                        {wisMod >= 0 && "+"}
+                        {wisMod}
+                      </h4>
+                    )}
+                    {wis !== 0 && <span className="abilityValue">{wis}</span>}
+                  </h3>
+                </div>
+                <div className="abilityScore">
+                  <h3
+                    className="abilitySpan"
+                    onChange={() => this.handleStatSelect("cha")}
+                  >
+                    <span className="abilityName">CHA</span>
+                    <span className="abilitySelector">
+                      {cha === 0 && (
+                        <DropdownSimp
+                          id="cha_select"
+                          placeholder={"Charisma Score"}
+                          options={pointArr}
+                          value={cha}
+                        />
+                      )}
+                      {cha === 0 && chaB !== 0 && (
+                        <p className="attrBonus">+{chaB}</p>
+                      )}{" "}
+                    </span>
+                    {cha !== 0 && (
+                      <h4 className="abilityMod">
+                        {chaMod >= 0 && "+"}
+                        {chaMod}
+                      </h4>
+                    )}
+                    {cha !== 0 && <span className="abilityValue">{cha}</span>}
+                  </h3>
+                </div>
+              </div>
+              {str !== 0 &&
+                dex !== 0 &&
+                con !== 0 &&
+                int !== 0 &&
+                wis !== 0 &&
+                cha !== 0 && (
+                  <Proficiencies
+                    backgroundUrl="/api/backgrounds/acolyte"
+                    race_profs={itemsRace.starting_proficiencies}
+                    class_profs={itemsClass.proficiencies}
+                    prof_choices={itemsClass.proficiency_choices}
+                    stats={[
+                      this.state.modArr[str],
+                      this.state.modArr[dex],
+                      this.state.modArr[con],
+                      this.state.modArr[int],
+                      this.state.modArr[wis],
+                      this.state.modArr[cha],
+                    ]}
+                    profBonus={profBonus[level]}
+                  />
+                )}
+            </div>
+            <div className="feats_traits">
+              <div className="basic_info">
+                <div className="abilitySpan">
+                  <span className="abilityName">Speed</span>
+                  <h4 className="abilityMod">{itemsRace.speed}</h4>
+                </div>
+                {dexMod !== 0 && (
+                  <div className="abilitySpan">
+                    <span className="abilityName">Initiative</span>
                     <h4 className="abilityMod">
                       {dexMod >= 0 && "+"}
                       {dexMod}
                     </h4>
-                  )}
-                  {dex !== 0 && <span className="abilityValue">{dex}</span>}
-                </h3>
-              </div>
-              <div className="abilityScore">
-                <h3
-                  className="abilitySpan"
-                  onChange={() => this.handleStatSelect("con")}
-                >
-                  <span className="abilityName">CON</span>
-                  <span className="abilitySelector">
-                    {con === 0 && (
-                      <DropdownSimp
-                        id="con_select"
-                        placeholder={"Constitution Score"}
-                        options={pointArr}
-                        value={con}
-                      />
-                    )}{" "}
-                    {con === 0 && conB !== 0 && (
-                      <p className="attrBonus">+ {conB}</p>
-                    )}{" "}
-                  </span>
-                  {con !== 0 && (
+                  </div>
+                )}
+                {conMod !== 0 && (
+                  <div className="abilitySpan">
+                    <span className="abilityName">Max HP</span>
                     <h4 className="abilityMod">
-                      {conMod >= 0 && "+"}
-                      {conMod}
+                      {itemsClass.hit_die +
+                        (itemsClass.hit_die / 2 + 1) * (level - 1) +
+                        conMod}
                     </h4>
-                  )}
-                  {con !== 0 && <span className="abilityValue">{con}</span>}
-                </h3>
+                    <span className="abilityValue">
+                      <strong>
+                        {level}d{itemsClass.hit_die}
+                      </strong>
+                    </span>
+                  </div>
+                )}
+                {wis !== 0 && (
+                  <div className="abilitySpan">
+                    <span className="abilityName">Passive Perception</span>
+                    <h4 className="abilityMod">{10 + wisMod}</h4>
+                  </div>
+                )}
               </div>
-              <div className="abilityScore">
-                <h3
-                  className="abilitySpan"
-                  onChange={() => this.handleStatSelect("int")}
-                >
-                  <span className="abilityName">INT</span>
-                  <span className="abilitySelector">
-                    {int === 0 && (
-                      <DropdownSimp
-                        id="int_select"
-                        placeholder={"Intelligence Score"}
-                        options={pointArr}
-                        value={int}
-                      />
-                    )}
-                    {int === 0 && intB !== 0 && (
-                      <p className="attrBonus">+ {intB}</p>
-                    )}{" "}
-                  </span>
-                  {int !== 0 && (
-                    <h4 className="abilityMod">
-                      {intMod >= 0 && "+"}
-                      {intMod}
-                    </h4>
-                  )}
-                  {int !== 0 && <span className="abilityValue">{int}</span>}
-                </h3>
+              <div className="Attacks">
+                <h3>Attacks</h3>
               </div>
-              <div className="abilityScore">
-                <h3
-                  className="abilitySpan"
-                  onChange={() => this.handleStatSelect("wis")}
-                >
-                  <span className="abilityName">WIS</span>
-                  <span className="abilitySelector">
-                    {wis === 0 && (
-                      <DropdownSimp
-                        id="wis_select"
-                        placeholder={"Wisdom Score"}
-                        options={pointArr}
-                        value={wis}
-                      />
-                    )}
-                    {wis === 0 && wisB !== 0 && (
-                      <p className="attrBonus">+ {wisB}</p>
-                    )}{" "}
-                  </span>
-                  {wis !== 0 && (
-                    <h4 className="abilityMod">
-                      {wisMod >= 0 && "+"}
-                      {wisMod}
-                    </h4>
-                  )}
-                  {wis !== 0 && <span className="abilityValue">{wis}</span>}
-                </h3>
-              </div>
-              <div className="abilityScore">
-                <h3
-                  className="abilitySpan"
-                  onChange={() => this.handleStatSelect("cha")}
-                >
-                  <span className="abilityName">CHA</span>
-                  <span className="abilitySelector">
-                    {cha === 0 && (
-                      <DropdownSimp
-                        id="cha_select"
-                        placeholder={"Charisma Score"}
-                        options={pointArr}
-                        value={cha}
-                      />
-                    )}
-                    {cha === 0 && chaB !== 0 && (
-                      <p className="attrBonus">+{chaB}</p>
-                    )}{" "}
-                  </span>
-                  {cha !== 0 && (
-                    <h4 className="abilityMod">
-                      {chaMod >= 0 && "+"}
-                      {chaMod}
-                    </h4>
-                  )}
-                  {cha !== 0 && <span className="abilityValue">{cha}</span>}
-                </h3>
-              </div>
-            </div>
-            {str !== 0 &&
-              dex !== 0 &&
-              con !== 0 &&
-              int !== 0 &&
-              wis !== 0 &&
-              cha !== 0 && (
-                <Proficiencies
-                  backgroundUrl="/api/backgrounds/acolyte"
-                  race_profs={itemsRace.starting_proficiencies}
-                  class_profs={itemsClass.proficiencies}
-                  prof_choices={itemsClass.proficiency_choices}
-                  stats={[
-                    this.state.modArr[str],
-                    this.state.modArr[dex],
-                    this.state.modArr[con],
-                    this.state.modArr[int],
-                    this.state.modArr[wis],
-                    this.state.modArr[cha],
-                  ]}
-                  profBonus={profBonus[level]}
-                />
+              {itemsClass.spellcasting && (
+                <div className="Spells">
+                  <h3>Spells</h3>
+                </div>
               )}
-          </div>
-          <div className="feats_traits">
-            <div className="abilitySpan">
-              <span className="abilityName">Speed</span>
-              <h4 className="abilityMod">{itemsRace.speed}</h4>
+              <div className="Profs">
+                <h3>Proficiencies & Languages</h3>
+              </div>
+              <div className="Equipment">
+                <h3>Inventory & Equipment</h3>
+              </div>
             </div>
           </div>
         </div>

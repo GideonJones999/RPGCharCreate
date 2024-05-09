@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Loading from "./Loading";
 import getData from "../Helpers/GetAPIFunc";
+import "../Styles/OneRace.scss";
 
 class OneClass extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class OneClass extends Component {
       return <Loading />;
     } else {
       return (
-        <div className={items.index}>
+        <div className="aspect-cont" id={"cont_"+items.index}>
           <h5 className="aspect-title">Hit Dice: 1d{items["hit_die"]}</h5>
           <h4 className="aspect-title">Proficiencies</h4>
           <ul>
