@@ -85,11 +85,19 @@ class Proficiencies extends Component {
               <strong>STR: </strong>
               {this.state.stats[0] +
                 (JSON.stringify(prof_list).indexOf("str") > -1 &&
+                  this.state.profBonus) >=
+                0 && "+"}
+              {this.state.stats[0] +
+                (JSON.stringify(prof_list).indexOf("str") > -1 &&
                   this.state.profBonus)}
             </li>
             <li>
               {" "}
               <strong>DEX: </strong>
+              {this.state.stats[1] +
+                (JSON.stringify(prof_list).indexOf("dex") > -1 &&
+                  this.state.profBonus) >=
+                0 && "+"}
               {this.state.stats[1] +
                 (JSON.stringify(prof_list).indexOf("dex") > -1 &&
                   this.state.profBonus)}
@@ -99,11 +107,19 @@ class Proficiencies extends Component {
               <strong>CON: </strong>
               {this.state.stats[2] +
                 (JSON.stringify(prof_list).indexOf("con") > -1 &&
+                  this.state.profBonus) >=
+                0 && "+"}
+              {this.state.stats[2] +
+                (JSON.stringify(prof_list).indexOf("con") > -1 &&
                   this.state.profBonus)}
             </li>
             <li>
               {" "}
               <strong>INT: </strong>
+              {this.state.stats[3] +
+                (JSON.stringify(prof_list).indexOf("int") > -1 &&
+                  this.state.profBonus) >=
+                0 && "+"}
               {this.state.stats[3] +
                 (JSON.stringify(prof_list).indexOf("int") > -1 &&
                   this.state.profBonus)}
@@ -113,11 +129,19 @@ class Proficiencies extends Component {
               <strong>WIS: </strong>
               {this.state.stats[4] +
                 (JSON.stringify(prof_list).indexOf("wis") > -1 &&
+                  this.state.profBonus) >=
+                0 && "+"}
+              {this.state.stats[4] +
+                (JSON.stringify(prof_list).indexOf("wis") > -1 &&
                   this.state.profBonus)}
             </li>
             <li>
               {" "}
               <strong>CHA: </strong>
+              {this.state.stats[5] +
+                (JSON.stringify(prof_list).indexOf("cha") > -1 &&
+                  this.state.profBonus) >=
+                0 && "+"}
               {this.state.stats[5] +
                 (JSON.stringify(prof_list).indexOf("cha") > -1 &&
                   this.state.profBonus)}

@@ -23,27 +23,27 @@ class Skill extends Component {
       switch (this.state.skillData.ability_score.index) {
         case "str":
           modifierTemp = this.state.stats[0];
-          this.setState({ abilityType: "str" });
+          this.setState({ abilityType: "Str" });
           break;
         case "dex":
           modifierTemp = this.state.stats[1];
-          this.setState({ abilityType: "dex" });
+          this.setState({ abilityType: "Dex" });
           break;
         case "con":
           modifierTemp = this.state.stats[2];
-          this.setState({ abilityType: "con" });
+          this.setState({ abilityType: "Con" });
           break;
         case "int":
           modifierTemp = this.state.stats[3];
-          this.setState({ abilityType: "int" });
+          this.setState({ abilityType: "Int" });
           break;
         case "wis":
           modifierTemp = this.state.stats[4];
-          this.setState({ abilityType: "wis" });
+          this.setState({ abilityType: "Wis" });
           break;
         case "cha":
           modifierTemp = this.state.stats[5];
-          this.setState({ abilityType: "cha" });
+          this.setState({ abilityType: "Cha" });
           break;
         default:
           break;
@@ -72,14 +72,14 @@ class Skill extends Component {
   };
 
   render() {
-    var { skillData, modifier, isSelected } = this.state;
+    var { skillData, modifier, isSelected, abilityType } = this.state;
     let isOption =
       JSON.stringify(this.props.profOpitons).indexOf(skillData.index) > -1;
 
     return (
       <div className="skill">
         {skillData && (
-          <h4>
+          <p>
             <input
               onChange={this.handleCheckboxChange}
               type="checkbox"
@@ -90,10 +90,13 @@ class Skill extends Component {
               id={"skill_" + skillData.index}
             ></input>
             <li>
-              {skillData.name} ({modifier >= 0 && "+"}
-              {modifier})
+              <strong>
+                {modifier >= 0 && "+"}
+                {modifier} {skillData.name}
+              </strong>{" "}
+              ({abilityType})
             </li>
-          </h4>
+          </p>
         )}
       </div>
     );

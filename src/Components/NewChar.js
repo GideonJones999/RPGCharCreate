@@ -455,7 +455,7 @@ class NewChar extends Component {
                   <span className="abilityName">Speed</span>
                   <h4 className="abilityMod">{itemsRace.speed}</h4>
                 </div>
-                {dexMod !== 0 && (
+                {dex !== 0 && (
                   <div className="abilitySpan">
                     <span className="abilityName">Initiative</span>
                     <h4 className="abilityMod">
@@ -464,7 +464,7 @@ class NewChar extends Component {
                     </h4>
                   </div>
                 )}
-                {conMod !== 0 && (
+                {con !== 0 && (
                   <div className="abilitySpan">
                     <span className="abilityName">Max HP</span>
                     <h4 className="abilityMod">
