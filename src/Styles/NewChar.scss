@@ -58,20 +58,23 @@ div.charContainer {
               border-radius: 35%;
               margin-top: -2.25em;
               background-color: white;
-              font-family: BlackCastle;
+              font-family: SpaceAst;
             }
             .abilitySelector {
               display: flex;
               flex-direction: row;
               justify-content: center;
               align-items: center;
-              font-family: Ferrum;
+              font-family: FantArt;
+              select {
+                font-family: FantArt;
+              }
             }
             .abilityMod {
               margin-top: 0.5em;
               margin-bottom: 0.5em;
               font-size: 1.5em;
-              font-family: Ferrum;
+              font-family: FantArt;
             }
             .attrBonus {
               margin: 0;
@@ -101,10 +104,16 @@ div.charContainer {
       }
     }
     div.feats_traits {
+      max-width: 50vw;
+      justify-content: center;
+      text-align: center;
+      text-justify: center;
       div.basic_info {
         display: flex;
         flex-direction: row;
+        margin: 0.5em 1em;
         .abilitySpan {
+          margin: 0.5em 0.25em;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -120,13 +129,13 @@ div.charContainer {
             border-radius: 35%;
             margin-top: -2.25em;
             background-color: white;
-            font-family: BlackCastle;
+            font-family: SpaceAst;
           }
           .abilityMod {
             margin-top: 0.5em;
             margin-bottom: 0.5em;
             font-size: 1.5em;
-            font-family: Ferrum;
+            font-family: FantArt;
           }
           .abilityValue {
             margin-bottom: -2.25em;
@@ -135,8 +144,13 @@ div.charContainer {
             padding: 0.5em;
             border: 1px black solid;
             border-radius: 35%;
-            font-family: Ferrum;
+            font-family: FantArt;
           }
+        }
+      }
+      div {
+        h3 {
+          font-family: Trickster;
         }
       }
     }

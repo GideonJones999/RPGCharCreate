@@ -3,7 +3,10 @@ import getData from "../Helpers/GetAPIFunc";
 import Loading from "./Loading";
 import "../Styles/NewChar.scss";
 import DropdownSimp from "../Helpers/DropdownSimp";
+import Skills from "./Skills";
+import Inventory from "./Inventory";
 import Proficiencies from "./Proficiencies";
+import Features from "./Features";
 
 class NewChar extends Component {
   constructor(props) {
@@ -43,11 +46,15 @@ class NewChar extends Component {
   async componentDidMount() {
     const jsonClass = await getData(`/api/classes/${this.props.class}`);
     const jsonRace = await getData(`/api/races/${this.props.race}`);
+    const jsonBackground = await getData(
+      `/api/backgrounds/${this.props.background}`
+    );
     this.setState(
       {
         isLoaded: true,
         itemsClass: jsonClass,
         itemsRace: jsonRace,
+        itemsBackground: jsonBackground,
       },
       () => {
         let apiStats = this.state.itemsRace.ability_bonuses;
@@ -81,9 +88,7 @@ class NewChar extends Component {
 
   handleLevelSelect = (e) => {
     var selectedLevel = e.target.value;
-    this.setState({ level: selectedLevel }, () =>
-      console.log(this.state.level)
-    );
+    this.setState({ level: selectedLevel });
   };
 
   handleStatSelect = (stat) => {
@@ -152,9 +157,7 @@ class NewChar extends Component {
       var newPointArr = this.state.pointArr;
       newPointArr.splice(indexofSel, 1);
     }
-    this.setState({ pointArr: newPointArr }, () => {
-      console.log("State Arr: ", this.state.pointArr);
-    });
+    this.setState({ pointArr: newPointArr });
   };
 
   render() {
@@ -162,6 +165,7 @@ class NewChar extends Component {
       isLoaded,
       itemsClass,
       itemsRace,
+      itemsBackground,
       level,
       pointArr,
       str,
@@ -191,13 +195,7 @@ class NewChar extends Component {
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
       ];
 
-      console.log(itemsClass);
-      console.log(itemsRace);
       // Vision
-      // Features and Traits
-      // Attacks
-      // Spellcasting
-      // Inventory
 
       return (
         <div className="charContainer">
@@ -432,8 +430,8 @@ class NewChar extends Component {
                 int !== 0 &&
                 wis !== 0 &&
                 cha !== 0 && (
-                  <Proficiencies
-                    backgroundUrl="/api/backgrounds/acolyte"
+                  <Skills
+                    background_profs={itemsBackground.starting_proficiencies}
                     race_profs={itemsRace.starting_proficiencies}
                     class_profs={itemsClass.proficiencies}
                     prof_choices={itemsClass.proficiency_choices}
@@ -449,58 +447,94 @@ class NewChar extends Component {
                   />
                 )}
             </div>
-            <div className="feats_traits">
-              <div className="basic_info">
-                <div className="abilitySpan">
-                  <span className="abilityName">Speed</span>
-                  <h4 className="abilityMod">{itemsRace.speed}</h4>
-                </div>
-                {dex !== 0 && (
-                  <div className="abilitySpan">
-                    <span className="abilityName">Initiative</span>
-                    <h4 className="abilityMod">
-                      {dexMod >= 0 && "+"}
-                      {dexMod}
-                    </h4>
+            {str !== 0 &&
+              dex !== 0 &&
+              con !== 0 &&
+              int !== 0 &&
+              wis !== 0 &&
+              cha !== 0 && (
+                <div className="feats_traits">
+                  <div className="basic_info">
+                    <div className="abilitySpan">
+                      <span className="abilityName">
+                        <strong>Speed</strong>
+                      </span>
+                      <h4 className="abilityMod">{itemsRace.speed}</h4>
+                    </div>
+                    {dex !== 0 && (
+                      <div className="abilitySpan">
+                        <span className="abilityName">
+                          <strong>Initiative</strong>
+                        </span>
+                        <h4 className="abilityMod">
+                          {dexMod >= 0 && "+"}
+                          {dexMod}
+                        </h4>
+                      </div>
+                    )}
+                    {con !== 0 && (
+                      <div className="abilitySpan">
+                        <span className="abilityName">
+                          <strong>Max HP</strong>
+                        </span>
+                        <h4 className="abilityMod">
+                          {itemsClass.hit_die +
+                            (itemsClass.hit_die / 2 + 1) * (level - 1) +
+                            conMod}
+                        </h4>
+                        <span className="abilityValue">
+                          <strong>
+                            {level}d{itemsClass.hit_die}
+                          </strong>
+                        </span>
+                      </div>
+                    )}
+                    {wis !== 0 && (
+                      <div className="abilitySpan">
+                        <span className="abilityName">
+                          <strong>Passive Perception</strong>
+                        </span>
+                        <h4 className="abilityMod">{10 + wisMod}</h4>
+                      </div>
+                    )}
                   </div>
-                )}
-                {con !== 0 && (
-                  <div className="abilitySpan">
-                    <span className="abilityName">Max HP</span>
-                    <h4 className="abilityMod">
-                      {itemsClass.hit_die +
-                        (itemsClass.hit_die / 2 + 1) * (level - 1) +
-                        conMod}
-                    </h4>
-                    <span className="abilityValue">
-                      <strong>
-                        {level}d{itemsClass.hit_die}
-                      </strong>
-                    </span>
+                  <div className="features">
+                    <h3>Features</h3>
+                    {itemsClass && (
+                      <Features
+                        backgroundTraits={itemsBackground}
+                        classTraits={itemsClass}
+                        raceTraits={itemsRace}
+                        level={level}
+                      />
+                    )}
                   </div>
-                )}
-                {wis !== 0 && (
-                  <div className="abilitySpan">
-                    <span className="abilityName">Passive Perception</span>
-                    <h4 className="abilityMod">{10 + wisMod}</h4>
+                  <div className="Attacks">
+                    <h3>Attacks</h3>
                   </div>
-                )}
-              </div>
-              <div className="Attacks">
-                <h3>Attacks</h3>
-              </div>
-              {itemsClass.spellcasting && (
-                <div className="Spells">
-                  <h3>Spells</h3>
+                  {itemsClass.spellcasting && (
+                    <div className="Spells">
+                      <h3>Spells</h3>
+                    </div>
+                  )}
+                  <div className="Profs">
+                    <Proficiencies
+                      background_profs={itemsBackground.starting_proficiencies}
+                      race_profs={itemsRace.starting_proficiencies}
+                      class_profs={itemsClass.proficiencies}
+                      languages={itemsRace.languages}
+                    />
+                    {/* <h3>Proficiencies & Languages</h3> */}
+                  </div>
+                  <div className="Equipment">
+                    <h3>Inventory & Equipment</h3>
+                    {/* <Inventory
+                  equipment={itemsClass.starting_equipment}
+                  equipOptions={itemsClass.starting_equipment_options}
+                /> */}
+                  </div>
                 </div>
               )}
-              <div className="Profs">
-                <h3>Proficiencies & Languages</h3>
-              </div>
-              <div className="Equipment">
-                <h3>Inventory & Equipment</h3>
-              </div>
-            </div>
           </div>
         </div>
       );

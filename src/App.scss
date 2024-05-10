@@ -1,6 +1,26 @@
 @font-face {
-  font-family: Potra;
-  src: url("../public/fonts/potra/Potra.ttf");
+  font-family: AliceInWonderland;
+  src: url("../public//fonts/alice-in-wonderland/Alice\ in\ Wonderland.ttf");
+}
+
+@font-face {
+  font-family: BlackCastle;
+  src: url("../public//fonts/black-castle-mf-font/Blackcastlemf-BG5n.ttf");
+}
+
+@font-face {
+  font-family: DevinneSwash;
+  src: url("../public//fonts/devinne-swash-font/DevinneSwash-qZd5.ttf");
+}
+
+@font-face {
+  font-family: Endor;
+  src: url("../public//fonts/endor/ENDOR___.ttf");
+}
+
+@font-face {
+  font-family: FairyDust;
+  src: url("../public//fonts/fairydustb/FairyDustB.ttf");
 }
 
 @font-face {
@@ -14,13 +34,33 @@
 }
 
 @font-face {
+  font-family: Potra;
+  src: url("../public/fonts/potra/Potra.ttf");
+}
+
+@font-face {
+  font-family: Rediviva;
+  src: url("../public/fonts/rediviva/Rediviva.ttf");
+}
+
+@font-face {
+  font-family: SpaceAst;
+  src: url("../public/fonts/space-and-astronomy-font/SpaceAndAstronomy-pZRD.ttf");
+}
+
+@font-face {
+  font-family: Trickster;
+  src: url("../public/fonts/trickster/Trickster-master/fonts/Trickster-Reg.ttf");
+}
+
+@font-face {
   font-family: Vinque;
   src: url("../public/fonts/vinque/vinque\ rg.otf");
 }
 
 @font-face {
-  font-family: BlackCastle;
-  src: url("../public//fonts/black-castle-mf-font/Blackcastlemf-BG5n.ttf");
+  font-family: Zelda;
+  src: url("../public/fonts/the-wild-breath-of-zelda-font/TheWildBreathOfZelda-15Lv.ttf");
 }
 
 .App {
@@ -38,14 +78,14 @@
     padding: 0.5em;
     min-width: 100vw;
     h1 {
-      font-family: FantArt;
+      font-family: AliceInWonderland;
     }
   }
 
   .App-body {
     div {
       h2 {
-        font-family: Vinque;
+        font-family: DevinneSwash;
       }
     }
   }

@@ -28,16 +28,12 @@ div.proficiences {
         flex-direction: row;
         margin: 0.25em;
         align-items: center;
-        // justify-content: center;
-
         input {
           position: relative !important;
           appearance: none;
           margin: $margin-small;
           box-sizing: content-box;
           overflow: hidden;
-
-          // circle
           &:before {
             content: "";
             display: block;
@@ -47,18 +43,14 @@ div.proficiences {
             border: 2px solid $text-lighter;
             transition: 0.2s border-color ease;
           }
-
           &:checked:before {
             border-color: $brand;
             transition: 0.5s border-color ease;
           }
-
           &:disabled:before {
             border-color: $text-lighter;
             background-color: $text-lighter;
           }
-
-          // dot
           &:after {
             content: "";
             display: block;
@@ -73,12 +65,10 @@ div.proficiences {
             border-radius: 100vh;
             transform: translate(-50%, -50%) scale(0);
           }
-
           &[type="checkbox"] {
             &:before {
               border-radius: $checkbox-size / 4;
             }
-
             &:after {
               width: $checkbox-size * 0.6;
               height: $checkbox-size;
@@ -87,22 +77,18 @@ div.proficiences {
               background-color: transparent;
               box-shadow: 4px 4px 0px 0px $brand;
             }
-
             &:checked:after {
               animation: toggleOnCheckbox 0.2s ease forwards;
             }
           }
-
           &[type="checkbox"].filled {
             &:before {
               border-radius: $checkbox-size / 4;
               transition: 0.2s border-color ease, 0.2s background-color ease;
             }
-
             &:checked:not(:disabled):before {
               background-color: $brand;
             }
-
             &:not(:disabled):after {
               box-shadow: 4px 4px 0px 0px white;
             }

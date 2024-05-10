@@ -9,10 +9,10 @@ const Dropdown = ({ id, placeholder, options, action }) => {
     setSelected(e.target.value);
     if (id === "selectRace") {
       playerRace = e.target.value;
-      console.log("You chose ", playerRace);
+      // console.log("You chose ", playerRace);
     } else {
       playerClass = e.target.value;
-      console.log("You chose ", playerClass);
+      // console.log("You chose ", playerClass);
     }
   };
 

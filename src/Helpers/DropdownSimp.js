@@ -5,7 +5,7 @@ const DropdownSimp = ({ id, placeholder, options, action }) => {
   const [selected, setSelected] = useState();
 
   const handleRaceSel = (e) => {
-    console.log("You chose ", e.target.value);
+    // console.log("You chose ", e.target.value);
     setSelected(e.target.value);
   };
 

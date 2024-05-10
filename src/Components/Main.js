@@ -71,7 +71,7 @@ class Main extends Component {
           </span>
         )}
         <div id="NewChar_container">
-          {allSelect && <NewChar class={playerClass} race={playerRace} />}
+          {allSelect && <NewChar class={playerClass} race={playerRace} background="acolyte"/>}
         </div>
       </div>
     );
